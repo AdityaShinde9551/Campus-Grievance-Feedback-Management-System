@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Submit Grievance</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav {
+            text-align: center;
+            padding: 15px;
+            background: #007bff;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 450px;
+            margin: 40px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+
+        select, textarea, input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        #identitySection {
+            margin-top: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .track-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .track-link a {
+            text-decoration: none;
+            color: #007bff;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            const anonymousCheckbox = document.getElementById("anonymous");
+            const identitySection = document.getElementById("identitySection");
+
+            function toggleIdentity() {
+                identitySection.style.display = anonymousCheckbox.checked ? "none" : "block";
+            }
+
+            anonymousCheckbox.addEventListener("change", toggleIdentity);
+            toggleIdentity();
+        };
+    </script>
+</head>
+<body>
+
+<div class="nav">
+    <a href="complaint.html">Submit Complaint</a>
+    <a href="track.php">Track Complaint</a>
+</div>
+
+<div class="container">
+    <h2>Submit a Grievance</h2>
+
+    <form action="submit_complaint.php" method="POST">
+
+        <label>Select College</label>
+        <select name="college" required>
+            <option value="">-- Select College --</option>
+            <option>ABC College of Engineering</option>
+            <option>XYZ Polytechnic</option>
+            <option>Other</option>
+        </select>
+
+        <label>Your Role</label>
+        <select name="role" required>
+            <option value="">-- Select Role --</option>
+            <option>Student</option>
+            <option>Faculty</option>
+            <option>Worker</option>
+        </select>
+
+        <label>Complaint Category</label>
+        <select name="category" required>
+            <option value="">-- Select Category --</option>
+            <option>Infrastructure</option>
+            <option>Academics</option>
+            <option>Cleanliness</option>
+            <option>Other</option>
+        </select>
+
+        <label>Complaint Description</label>
+        <textarea name="description" rows="4" required></textarea>
+
+        <label>
+            <input type="checkbox" id="anonymous" name="anonymous">
+            Submit Anonymously
+        </label>
+
+        <div id="identitySection">
+            <label>Your Name</label>
+            <input type="text" name="name">
+
+            <label>College ID</label>
+            <input type="text" name="college_id">
+        </div>
+
+        <button type="submit">Submit Complaint</button>
+
+        <div class="track-link">
+            <a href="track.php">Track Existing Complaint</a>
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>

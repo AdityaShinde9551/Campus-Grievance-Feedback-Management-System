@@ -1,0 +1,8 @@
+First open xampp control panel 
+start apache 
+copy paste following url-
+		http://localhost
+xampp web page opens
+ without starting apache web page does not open
+
+
